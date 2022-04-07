@@ -1,0 +1,7 @@
+[Unit]
+Description=Use some bitbuyAPI to get a rough estimation of crypto trades value
+
+[Service]
+WorkingDirectory=/home/hass
+ExecStart=/opt/BitBuyAPI/bitbuy_balances.py
+User=hass

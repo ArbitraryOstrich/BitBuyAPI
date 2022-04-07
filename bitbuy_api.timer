@@ -1,0 +1,8 @@
+[Unit]
+Description=Use some bitbuyAPI to get a rough estimation of crypto trades value
+[Timer]
+OnBootSec=300
+OnUnitActiveSec=300
+AccuracySec=1ms
+[Install]
+WantedBy=timers.target

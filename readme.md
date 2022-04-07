@@ -7,3 +7,15 @@ Specifically [banhao](https://github.com/banhao/BitBuy-API-Authentication-Python
 <img alt="readme-2776209b.png" src="assets/readme-2776209b.png" width="" height="" >
 
 This is me just building a component of a system that will graph my balances for me.
+
+
+Includes some influxDB code to push it into my DB
+
+Includes systemD service files to run the script, note it currently runs every 5
+minutes and you may have to change the path.
+
+```sh
+sudo ln -s /opt/BitBuyAPI/bitbuy_api.service /etc/systemd/system/bitbuy_api.service
+sudo ln -s /opt/BitBuyAPI/bitbuy_api.timer /etc/systemd/system/bitbuy_api.timer
+sudo systemctl daemon-reload
+```
