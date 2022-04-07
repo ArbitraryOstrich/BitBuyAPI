@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 import hmac
 import hashlib
 import requests
@@ -15,9 +14,12 @@ import secrets
 
 stamp = int(round(time.time() * 1000))
 
+## this could done way better, at least in a more modular way. It took a while
+# to realise the {} where included in the hmac_msg.
+
+## I also havent figured out content-length
 # api_address = f"https://partner.bcm.exchange/api/v1/coins?apikey={Pub}&stamp={stamp}"
 # json_data = f'{{\"path\":\"/api/v1/coins\",\"content-length\":-1,\"query\":\"apikey={Pub}&stamp={stamp}\"}}'
-
 
 api_address = (
     f"https://partner.bcm.exchange/api/v1/wallets?apikey={secrets.Pub}&stamp={stamp}"
@@ -26,7 +28,7 @@ json_data = f'{{"path":"/api/v1/wallets","content-length":-1,"query":"apikey={se
 
 
 # https://docs.python.org/3/library/stdtypes.html?highlight=bytes#bytes
-hmac_msg = bytes(str(json_data), "UTF-8")
+hmac_msg = bytes(json_data, "UTF-8")
 hmac_key = bytes(secrets.Priv, "UTF-8")
 # https://docs.python.org/3/library/hmac.html?highlight=hmac#module-hmac
 hmac_val = hmac.new(key=hmac_key, msg=hmac_msg, digestmod=hashlib.sha256).digest()
