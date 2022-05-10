@@ -82,7 +82,10 @@ for wallet in response.json():
                 },
             }
         )
+        if wallet["symbol"] == "CAD":
+            fiat_sum += wallet["balance"]
         fiat_sum += wallet["fiatBalance"]
+
 
 json_body.append(
     {

@@ -6,3 +6,4 @@ OnUnitActiveSec=300
 AccuracySec=1ms
 [Install]
 WantedBy=timers.target
+WantedBy=multi-user.target
